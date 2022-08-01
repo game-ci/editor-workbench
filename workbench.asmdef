@@ -2,7 +2,7 @@
     "name": "com.game-ci.workbench",
     "rootNamespace": "",
     "references": [],
-    "includePlatforms": [],
+    "includePlatforms": ["editor"],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": true,

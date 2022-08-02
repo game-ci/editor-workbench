@@ -65,10 +65,16 @@ public class GameCIWorkbench : EditorWindow
         GUILayout.Toggle(false, "Auto Refresh");
         GUILayout.EndHorizontal();
         _scroll = EditorGUILayout.BeginScrollView(_scroll);
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.BeginVertical();
         DrawGameCiStatus();
+        EditorGUILayout.EndVertical();
+        EditorGUILayout.BeginVertical();
+        DrawGitStatus();
+        EditorGUILayout.EndVertical();
+        EditorGUILayout.EndHorizontal();
         DrawListResourcesCommand();
         DrawBuildInspection();
-        DrawGitStatus();
         DrawRunGameCiButtonAndOptions();
         DrawCustomHooksAndJobs();
         DrawGarbageCollection();
@@ -141,8 +147,6 @@ public class GameCIWorkbench : EditorWindow
 
     private static void DrawGitStatus()
     {
-        EditorGUILayout.Space(space);
-
         GUILayout.Label("Git Status",
             EditorStyles.whiteLargeLabel);
         GUILayout.Label("unchecked changes",
@@ -156,7 +160,6 @@ public class GameCIWorkbench : EditorWindow
         EditorGUILayout.TextField("Active Branch", "main");
         EditorGUILayout.TextField("Pushed Branch", "main");
         EditorGUILayout.TextField("Git Remote URL", "...");
-        EditorGUILayout.Space(space);
     }
 
     private void DrawListResourcesCommand()
@@ -230,11 +233,9 @@ public class GameCIWorkbench : EditorWindow
             "Cloud Runner Resources Status",
             EditorStyles.whiteLargeLabel
         );
-        EditorGUILayout.BeginVertical(EditorStyles.textField);
-        GUILayout.Label(_list, EditorStyles.miniBoldLabel);
-        EditorGUILayout.EndVertical();
-            
-        EditorGUILayout.Space(space);
+        EditorGUILayout.BeginHorizontal(EditorStyles.textField);
+        GUILayout.Label(_list, EditorStyles.wordWrappedMiniLabel);
+        EditorGUILayout.EndHorizontal();
     }
 
     private void DrawGarbageCollection()

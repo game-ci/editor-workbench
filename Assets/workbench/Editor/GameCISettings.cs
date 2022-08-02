@@ -96,11 +96,6 @@ namespace BuildMethods.Settings
                     EditorStyles.whiteLargeLabel);
                 EditorGUILayout.HelpBox("The Cloud Runner cache is used to store selected folders (e.g Unity Library folder, Git LFS) and persists the contents into new tasks", MessageType.Info);
                 EditorGUILayout.Toggle("Cache Override Enabled", false);
-                GUILayout.BeginHorizontal();
-                GUILayout.Label("Compression");
-                EditorGUILayout.Toggle("None (fastest)", false);
-                EditorGUILayout.Toggle("LZ4 (fast + smaller)", true);
-                GUILayout.EndHorizontal();
                 EditorGUILayout.TextField("Cache Directories", ".git/LFS,Library");
                 EditorGUILayout.TextField("Include Files Pattern", "*");
                 EditorGUILayout.TextField("Exclude Files Pattern", "");
@@ -110,6 +105,11 @@ namespace BuildMethods.Settings
                 EditorGUILayout.TextField("Cache Override Command Push", "...");
                 EditorGUILayout.TextField("Cache Override Command Pull", "...");
                 EditorGUILayout.TextField("Cache Override Command Exists", "...");
+                GUILayout.BeginHorizontal();
+                GUILayout.Label("Compression");
+                EditorGUILayout.Toggle("None (fastest)", false);
+                EditorGUILayout.Toggle("LZ4 (fast + smaller)", true);
+                GUILayout.EndHorizontal();
 
                 EditorGUILayout.Space(space);
                 
@@ -135,7 +135,7 @@ namespace BuildMethods.Settings
                 GUILayout.Label("CLI Help", EditorStyles.whiteLargeLabel);
                 EditorGUILayout.HelpBox("The is the command line --help output.", MessageType.Info);
                 EditorGUILayout.BeginVertical(EditorStyles.textField);
-                GUILayout.Label(GameCIWorkbench.HelpText, EditorStyles.wordWrappedLabel);
+                GUILayout.Label(GameCIWorkbench.HelpText, EditorStyles.wordWrappedMiniLabel);
                 EditorGUILayout.EndVertical();
                 
                 EditorGUILayout.EndScrollView();

@@ -63,6 +63,18 @@ public class GameCIWorkbench : EditorWindow
         }
         EditorGUILayout.TextField("Refresh Interval (seconds)", "15");
         GUILayout.Toggle(false, "Auto Refresh");
+        DrawStatus();
+        DrawListResourcesCommand();
+        DrawBuildInspection();
+        DrawRunGameCiButtonAndOptions();
+        DrawCustomHooksAndJobs();
+        DrawGarbageCollection();
+        EditorGUILayout.EndScrollView();
+    }
+
+    private static void DrawStatus()
+    {
+        EditorGUILayout.Space(space);
         GUILayout.EndHorizontal();
         _scroll = EditorGUILayout.BeginScrollView(_scroll);
         EditorGUILayout.BeginHorizontal();
@@ -73,12 +85,7 @@ public class GameCIWorkbench : EditorWindow
         DrawGitStatus();
         EditorGUILayout.EndVertical();
         EditorGUILayout.EndHorizontal();
-        DrawListResourcesCommand();
-        DrawBuildInspection();
-        DrawRunGameCiButtonAndOptions();
-        DrawCustomHooksAndJobs();
-        DrawGarbageCollection();
-        EditorGUILayout.EndScrollView();
+        EditorGUILayout.Space(space);
     }
 
     private static void DrawCustomHooksAndJobs()
@@ -123,16 +130,21 @@ public class GameCIWorkbench : EditorWindow
         GUILayout.Toggle(true, "Auto Watch On Run");
         GUILayout.Label("Tests",
             EditorStyles.miniBoldLabel);
+        EditorGUILayout.BeginHorizontal();
         GUILayout.Toggle(true, "Run Playmode Tests");
         GUILayout.Toggle(true, "Run Editor Tests");
-        GUILayout.Toggle(true, "Enabled Test Category Filter");
-        EditorGUILayout.TextField("Test Category", "");
+        EditorGUILayout.TextField("Test Category Filter", "*");
+        EditorGUILayout.EndHorizontal();
         GUILayout.Label("Builds",
             EditorStyles.miniBoldLabel);
         GUILayout.Toggle(true, "Build StandaloneWindows64");
         GUILayout.Toggle(true, "Build StandaloneLinux64");
+        EditorGUILayout.BeginHorizontal();
         GUILayout.Toggle(true, "Run Custom Editor Method");
         EditorGUILayout.TextField("Custom Editor Method", "");
+        EditorGUILayout.EndHorizontal();
+        GUILayout.Label("Other Settings",
+            EditorStyles.miniBoldLabel);
         EditorGUILayout.TextField("timeout (hours)", "48");
         if (GUILayout.Button("Run Game-CI"))
         {
@@ -225,6 +237,7 @@ public class GameCIWorkbench : EditorWindow
             );
             GUILayout.Label(_selectedBuild);
         }
+        EditorGUILayout.Space(space);
     }
 
     private static void DrawGameCiStatus()

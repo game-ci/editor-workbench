@@ -127,7 +127,6 @@ public class GameCIWorkbench : EditorWindow
             "Run Builds",
             EditorStyles.whiteLargeLabel
         );
-        GUILayout.Toggle(true, "Auto Watch On Run");
         GUILayout.Label("Tests",
             EditorStyles.miniBoldLabel);
         EditorGUILayout.BeginHorizontal();
@@ -146,6 +145,7 @@ public class GameCIWorkbench : EditorWindow
         GUILayout.Label("Other Settings",
             EditorStyles.miniBoldLabel);
         EditorGUILayout.TextField("timeout (hours)", "48");
+        GUILayout.Toggle(true, "Auto Watch On Run");
         if (GUILayout.Button("Run Game-CI"))
         {
             GameCiCli.RunCommand(

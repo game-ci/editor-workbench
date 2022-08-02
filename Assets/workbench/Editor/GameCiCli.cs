@@ -1,8 +1,7 @@
-using System.IO;
+﻿using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using BuildMethods.Settings;
-using Haven.PathPainter2;
 using UnityEngine;
 
 namespace BuildMethods
